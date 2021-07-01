@@ -12,6 +12,21 @@ import java.util.concurrent.TimeUnit;
 public class OpenAndPlayGameSampleTestSteps {
 	private static WebDriver driver;
 
+	@Given("the user logs in with \"([^\"]*)\" and default password")
+	public void the_user_logs_in_with_and_default_password(String arg1) {
+
+	}
+
+	@When("the user searches for \"([^\"]*)\" game and opens it")
+	public void the_user_searches_for_game_and_opens_it(String arg1) {
+
+	}
+
+	@Then("the selected game should be opened successfully")
+	public void the_selected_game_should_be_opened_successfully() {
+
+	}
+
 	@When("the user's current balance is noted before playing the game")
 	public void theUserSCurrentBalanceIsNotedBeforePlayingTheGame() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "dependencies/chromedriver.exe");
