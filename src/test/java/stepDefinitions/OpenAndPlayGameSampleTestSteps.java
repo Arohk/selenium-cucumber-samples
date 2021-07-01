@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import org.sikuli.script.FindFailed;
+import org.testng.Assert;
 import org.testng.reporters.jq.Main;
 import pages.HomePage;
 import cucumber.api.java.After;
@@ -8,16 +10,21 @@ import cucumber.api.java.en.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.MainPage;
+import pages.ZeusGamePage;
+
+import java.net.URISyntaxException;
 
 public class OpenAndPlayGameSampleTestSteps {
 	WebDriver driver;
 	HomePage homePage;
+	ZeusGamePage zeusGamePage;
 
 	@Before
-	public void setUp() {
+	public void setUp() throws URISyntaxException {
 		System.setProperty("webdriver.chrome.driver", "dependencies/chromedriver.exe");
 		driver = new ChromeDriver();
 		homePage = new HomePage(driver);
+		zeusGamePage = new ZeusGamePage(driver);
 		driver.get("https://www.1000000bet.com/");
 		driver.manage().window().maximize();
 	}
@@ -41,7 +48,8 @@ public class OpenAndPlayGameSampleTestSteps {
 	}
 
 	@Then("the selected game should be opened successfully")
-	public void the_selected_game_should_be_opened_successfully() {
+	public void the_selected_game_should_be_opened_successfully() throws FindFailed, URISyntaxException {
+		Assert.assertTrue(zeusGamePage.isGameLoaded());
 	}
 
 	@When("the user's current balance is noted before playing the game")
@@ -50,8 +58,8 @@ public class OpenAndPlayGameSampleTestSteps {
 	}
 
 	@And("the user plays one round")
-	public void theUserPlaysOneRound() throws InterruptedException {
-
+	public void theUserPlaysOneRound() throws InterruptedException, URISyntaxException, FindFailed {
+		zeusGamePage.clickContinue();
 	}
 
 	@And("the user closes the game")
