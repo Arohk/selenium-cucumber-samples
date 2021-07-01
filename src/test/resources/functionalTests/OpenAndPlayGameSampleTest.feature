@@ -1,8 +1,8 @@
 Feature: User successfully opens and plays the Zeus Ancient Fortunes game
 
   Background:
-    Given the user logs in with "UserName" and default password
-    When the user searches for "Zeus Ancient fortunes" game and opens it
+    Given the user logs in with "tu_assessment3" and password "Assessment@123"
+    When the user searches for "Zeus" game and opens it
 
   Scenario: The game opens successfully
     Then the selected game should be opened successfully
