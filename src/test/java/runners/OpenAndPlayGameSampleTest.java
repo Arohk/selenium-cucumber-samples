@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
 		plugin = { "pretty", "html:target/cucumber-report.html" },
 		features = { "src/test/resources/functionalTests/OpenAndPlayGameSampleTest.feature" },
-		glue = { "stepDefinitions" }
+		glue = {"stepDefinitions"}
 )
 
 public class OpenAndPlayGameSampleTest {
