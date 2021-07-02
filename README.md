@@ -27,6 +27,13 @@ object serves as a layer of abstraction between tests and code. When A test fail
 step may call a selector that is no longer valid, but that selector may be used by many other steps. By having a single
 source of truth of what the selector is supposed to be, fixing one selector on the page object could repair a number of
 failing tests that were affected by the same selector.
+  
+### Fluent Design Pattern
+
+In software engineering, a fluent Design Pattern is an implementation of an object-oriented API that aims to provide the most readable code.A fluent pattern is typically implemented by using method cascading (concretely method chaining) to relay the instruction context of a subsequent call (but a fluent interface entails more than just method chaining).
+The context is defined through the return value of a called method-self-referential, where the new context is equivalent to the last context.
+Self-referential, where the new context is equivalent to the last contest terminated by the return of a void context.
+Terminated by the return of a void context.
 
 ### Run The Sample Test
 
