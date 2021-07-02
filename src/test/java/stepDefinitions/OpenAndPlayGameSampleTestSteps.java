@@ -1,9 +1,7 @@
 package stepDefinitions;
 
-import cucumber.api.java.it.Ma;
 import org.sikuli.script.FindFailed;
 import org.testng.Assert;
-import org.testng.reporters.jq.Main;
 import pages.HomePage;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
