@@ -17,7 +17,7 @@ import java.net.URISyntaxException;
 public class MainPage extends BasePage {
 	private static final Logger LOG = LoggerFactory.getLogger(MainPage.class);
 
-	private static Integer initialBalance = 0;
+	private static Integer initialBalance;
 
 	@FindBy(xpath = "//a[@data-link-name='games']")
 	private WebElement gamesButton;
