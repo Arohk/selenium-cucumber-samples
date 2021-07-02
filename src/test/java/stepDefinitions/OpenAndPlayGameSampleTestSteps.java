@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import cucumber.api.java.it.Ma;
 import org.sikuli.script.FindFailed;
 import org.testng.Assert;
 import org.testng.reporters.jq.Main;
@@ -18,6 +19,7 @@ public class OpenAndPlayGameSampleTestSteps {
 	WebDriver driver;
 	HomePage homePage;
 	ZeusGamePage zeusGamePage;
+	MainPage mainPage;
 
 	@Before
 	public void setUp() throws URISyntaxException {
@@ -25,6 +27,7 @@ public class OpenAndPlayGameSampleTestSteps {
 		driver = new ChromeDriver();
 		homePage = new HomePage(driver);
 		zeusGamePage = new ZeusGamePage(driver);
+		mainPage = new MainPage(driver);
 		driver.get("https://www.1000000bet.com/");
 		driver.manage().window().maximize();
 	}
@@ -38,36 +41,38 @@ public class OpenAndPlayGameSampleTestSteps {
 	}
 
 	@When("the user searches for \"([^\"]*)\" game and opens it")
-	public void the_user_searches_for_game_and_opens_it(String gameName) throws InterruptedException {
-		MainPage mainPage = new MainPage(driver);
+	public void the_user_searches_for_game_and_opens_it(String gameName) throws URISyntaxException {
 		mainPage.clickGames()
 				.clickSearch()
 				.inputGameName(gameName)
 				.clickZeusGame();
-
 	}
 
 	@Then("the selected game should be opened successfully")
-	public void the_selected_game_should_be_opened_successfully() throws FindFailed, URISyntaxException {
+	public void the_selected_game_should_be_opened_successfully() throws FindFailed {
 		Assert.assertTrue(zeusGamePage.isGameLoaded());
 	}
 
 	@When("the user's current balance is noted before playing the game")
-	public void theUserSCurrentBalanceIsNotedBeforePlayingTheGame() throws InterruptedException {
-
+	public void theUserSCurrentBalanceIsNotedBeforePlayingTheGame() {
+		mainPage.noteCurrentBalance();
 	}
 
 	@And("the user plays one round")
-	public void theUserPlaysOneRound() throws InterruptedException, URISyntaxException, FindFailed {
-		zeusGamePage.clickContinue();
+	public void theUserPlaysOneRound() throws URISyntaxException, FindFailed {
+		zeusGamePage.clickContinue()
+				.clickPlay();
 	}
 
 	@And("the user closes the game")
 	public void theUserClosesTheGame() {
+		zeusGamePage.clickClose();
 	}
 
 	@Then("the user should have a lower balance than before playing the game")
 	public void theUserShouldHaveALowerBalanceThanBeforePlayingTheGame() {
+		driver.navigate().refresh();
+		Assert.assertTrue(mainPage.isBalanceAdjusted());
 	}
 
 	@After public void tearDown() {

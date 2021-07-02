@@ -22,16 +22,14 @@ public class HomePage extends BasePage {
 		super(driver);
 	}
 
-	public AccountLoginModal clickLogin(){
+	/**
+	 * Clicks the login button
+	 *
+	 * @return AccountLoginModal
+	 */
+	public AccountLoginModal clickLogin() {
 		LOG.info("Clicking on the login button");
 		loginButton.click();
 		return new AccountLoginModal(driver);
-	}
-
-	public HomePage click() throws InterruptedException {
-		WebElement click = driver.findElement(By.xpath("//*[@id=\"archive-link-link\"]"));
-		click.click();
-		Thread.sleep(3000);
-		return new HomePage(driver);
 	}
 }

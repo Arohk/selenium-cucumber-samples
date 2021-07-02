@@ -23,6 +23,11 @@ public class AccountLoginModal extends BasePage {
 		super(driver);
 	}
 
+	/**
+	 * Inputs the username
+	 *
+	 * @return AccountLoginModal
+	 */
 	public AccountLoginModal inputUsername(String userName) {
 		LOG.info("Setting username");
 		userNameField.click();
@@ -31,6 +36,11 @@ public class AccountLoginModal extends BasePage {
 		return new AccountLoginModal(driver);
 	}
 
+	/**
+	 * Inputs the password
+	 *
+	 * @return AccountLoginModal
+	 */
 	public AccountLoginModal inputPassword(String password) {
 		LOG.info("Setting password");
 		passwordField.click();
@@ -39,10 +49,14 @@ public class AccountLoginModal extends BasePage {
 		return new AccountLoginModal(driver);
 	}
 
-	public MainPage clickLogin() throws InterruptedException {
+	/**
+	 * Clicks the login button
+	 *
+	 * @return MainPage
+	 */
+	public MainPage clickLogin() {
 		LOG.info("Clicking Login");
 		loginButton.click();
-		Thread.sleep(5000);
 		return new MainPage(driver);
 	}
 }
