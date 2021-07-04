@@ -69,6 +69,8 @@ public class OpenAndPlayGameSampleTestSteps {
 
 	@Then("the user should have a lower balance than before playing the game")
 	public void theUserShouldHaveALowerBalanceThanBeforePlayingTheGame() {
+		// note that when returning upon the main page from the game, the site is broken, therefore a refresh is needed.
+		driver.navigate().refresh();
 		Assert.assertTrue(mainPage.isBalanceAdjusted());
 	}
 
