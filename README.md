@@ -1,4 +1,4 @@
-# CucumberProject
+# selenium-cucumber-samples
 Sample project with Cucumber Java and Selenium
 
 ### Installation (pre-requisites)
